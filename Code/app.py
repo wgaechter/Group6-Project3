@@ -27,9 +27,9 @@ def home():
 
 
 
-@app.route("/map")
+@app.route("/home")
 def normal():
-    return "map"
+    return render_template('home.html')
 
 
 @app.route("/json")
