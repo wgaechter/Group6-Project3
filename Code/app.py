@@ -25,12 +25,9 @@ json_data = dumps(list_cities)
 def home():
     return "go to /home"
 
-
-
 @app.route("/home")
 def normal():
     return render_template('home.html')
-
 
 @app.route("/json")
 def jsonified():
