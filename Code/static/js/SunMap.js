@@ -1,4 +1,4 @@
-var url = "http://127.0.0.1:5000/json";
+//var url = "http://127.0.0.1:5000/json";
 
 var SunMap = L.map("mapid", {
     center: [39.50, -98.35],
@@ -55,7 +55,7 @@ function IconTest() {
   L.marker([39.50, -80], {
     icon: SunnyIcon
   }).addTo(SunMap); 
-}
+};
 
 IconTest();
 //-----------------------------------------------------------------------
