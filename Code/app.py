@@ -12,19 +12,15 @@ conn = 'mongodb://localhost:27017'
 client = pymongo.MongoClient(conn)
 
 # Define the 'classDB' database in Mongo
-db = client.sunshine
+db = client.sun_data
 
-cities = db.sunshine_db.find()
+cities = db.sun_data.find()
 list_cities = list(cities)
 json_data = dumps(list_cities)
 
 # for city in cities:
 #     print(city)
  
-
-
-
-
 @app.route("/")
 def home():
     return render_template('home.html')
