@@ -61,20 +61,21 @@ L.marker([39.50, -80], {
 d3.json(url, function(data){
   console.log(data);
   console.log(data.length);
-  var SunData = data.object
+  var SunData = data
   for (var i = 0; i < data.length; i++) {
-    console.log(`Detected ${SunData[i]}`)
-    /* if (SunData[i].ann < 60) {
-      console.log(SunData[i].city)
-      L.marker([SunData[i].latitude, data[i].longitude], {
+    //console.log(`Detected ${SunData[i].CITY}`)
+    if (SunData[i].ANN < 60) {
+      console.log(`${SunData[i].CITY} is sunny usually!`)
+      L.marker([SunData[i].LATITUDE, data[i].LONGITUDE], {
         icon: CloudIcon
-      }).bindPopup("<h1>" + data[i].city + "</h1>").addTo(SunMap);  
+      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
     }
-    if (data[i].ann >= 60) {
-      L.marker([data[i].latitude, data[i].longitude], {
+    if (data[i].ANN >= 60) {
+      console.log(`${SunData[i].CITY} is NOT sunny usually!`)
+      L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
         icon: SunnyIcon
-      }).bindPopup("<h1>" + data[i].city + "</h1>").addTo(SunMap);  
-    } */
+      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+    }
   };
 });
 /* const dataPromise = d3.json(url);
