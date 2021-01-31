@@ -10,11 +10,26 @@ body {
   position: relative;
   border: 1px solid black;
   border-radius: 8px;
-  height: 400px;  /* or as desired */
+  height: 500px;  /* or as desired */
   width: 100%;  /* This means "100% of the width of its container", the .col-md-8 */
+}
+
+#ReportButton {
+  margin-bottom: 30px;
 }
 
 h1 {
   text-align: center;
 }
 
+h2 {
+  text-align: center;
+}
+
+p.header {
+  text-align: center;
+}
+
+p.CityInfoText {
+  text-align: center;
+}

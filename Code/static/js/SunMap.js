@@ -1,7 +1,7 @@
 var url = "http://127.0.0.1:5000/json";
 
 var SunMap = L.map("mapid", {
-    center: [39.50, -98.35],
+    center: [35.50, -98.35],
     zoom: 4,
 });
 
