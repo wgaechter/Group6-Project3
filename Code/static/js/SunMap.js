@@ -57,7 +57,9 @@ L.marker([39.50, -80], {
  */
 //-----------------------------------------------------------------------
 
+// Variables for button call event
 var reportList = []
+var buttonCall = d3.select("#ReportButton")
 
 d3.json(url, function(data){
   console.log(data);
@@ -76,8 +78,6 @@ d3.json(url, function(data){
 
         reportList = []
         reportList.push(clickedContent)
-
-        var buttonCall = d3.select("#ReportButton")
         
         buttonCall.select("p")
             .text("Generate Report For " + reportList)
@@ -96,8 +96,6 @@ d3.json(url, function(data){
 
         reportList = []
         reportList.push(clickedContent)
-
-        var buttonCall = d3.select("#ReportButton")
         
         buttonCall.select("p")
             .text("Generate Report For " + reportList)
@@ -116,8 +114,6 @@ d3.json(url, function(data){
 
         reportList = []
         reportList.push(clickedContent)
-
-        var buttonCall = d3.select("#ReportButton")
         
         buttonCall.select("p")
             .text("Generate Report For " + reportList)
@@ -136,8 +132,6 @@ d3.json(url, function(data){
 
         reportList = []
         reportList.push(clickedContent)
-
-        var buttonCall = d3.select("#ReportButton")
         
         buttonCall.select("p")
             .text("Generate Report For " + reportList)
@@ -148,7 +142,27 @@ d3.json(url, function(data){
   };
 });
 
+//EVENT LISTENER FOR BUTTON  - SHOULD BE ABLE TO WORK OFF OF reportList and a loop through data finding city.
 
+buttonCall.on("click", function() {
+  console.log("Button Clicked")
+  console.log(reportList)
+
+  if (reportList.length == 0) {
+    alert("Please click a city marker to generate a report for that city.");
+  }
+
+  d3.json(url, function(data) {
+    console.log(data);
+    console.log(data.length);
+    var GraphData = data
+    for (var i = 0; i < GraphData.length; i++) { 
+      if (GraphData[i].CITY == reportList[0]) {
+        console.log(GraphData[i])
+      };
+    };  
+  });  
+});
 
 
 /* const dataPromise = d3.json(url);
