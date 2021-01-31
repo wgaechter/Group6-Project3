@@ -57,6 +57,9 @@ L.marker([39.50, -80], {
  */
 //-----------------------------------------------------------------------
 
+// Variables for button call event
+var reportList = []
+var buttonCall = d3.select("#ReportButton")
 
 d3.json(url, function(data){
   console.log(data);
@@ -68,27 +71,99 @@ d3.json(url, function(data){
       console.log(`${SunData[i].CITY} is NOT sunny usually!`)
       L.marker([SunData[i].LATITUDE, data[i].LONGITUDE], {
         icon: CloudIcon
-      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+      }).bindPopup(data[i].CITY).addTo(SunMap).on("click", function(e) {
+        console.log("Clicked Marker")
+        var clickedMarker = e.target.getPopup();
+        var clickedContent = clickedMarker.getContent();
+
+        reportList = []
+        reportList.push(clickedContent)
+        
+        buttonCall.select("p")
+            .text("Generate Report For " + reportList)
+
+        console.log(reportList);
+      });   
     }
     if (data[i].ANN >= 55 && data[i].ANN < 60) {
       console.log(`${SunData[i].CITY} is NOT usually sunny usually!`)
       L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
         icon: PartlyIcon
-      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+      }).bindPopup(data[i].CITY).addTo(SunMap).on("click", function(e) {
+        console.log("Clicked Marker")
+        var clickedMarker = e.target.getPopup();
+        var clickedContent = clickedMarker.getContent();
+
+        reportList = []
+        reportList.push(clickedContent)
+        
+        buttonCall.select("p")
+            .text("Generate Report For " + reportList)
+
+        console.log(reportList);
+      });    
     }
     if (data[i].ANN >= 60 && data[i].ANN < 65) {
       console.log(`${SunData[i].CITY} is NOT always sunny usually!`)
       L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
         icon: HazyIcon
-      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+      }).bindPopup(data[i].CITY).addTo(SunMap).on("click", function(e) {
+        console.log("Clicked Marker")
+        var clickedMarker = e.target.getPopup();
+        var clickedContent = clickedMarker.getContent();
+
+        reportList = []
+        reportList.push(clickedContent)
+        
+        buttonCall.select("p")
+            .text("Generate Report For " + reportList)
+      
+        console.log(reportList);
+      });    
     }
     if (data[i].ANN >= 65) {
       console.log(`${SunData[i].CITY} is sunny usually!`)
       L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
         icon: SunnyIcon
-      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+      }).bindPopup(data[i].CITY).addTo(SunMap).on("click", function(e) {
+        console.log("Clicked Marker")
+        var clickedMarker = e.target.getPopup();
+        var clickedContent = clickedMarker.getContent();
+
+        reportList = []
+        reportList.push(clickedContent)
+        
+        buttonCall.select("p")
+            .text("Generate Report For " + reportList)
+
+        console.log(reportList);
+      });  
     }
   };
 });
+
+//EVENT LISTENER FOR BUTTON  - SHOULD BE ABLE TO WORK OFF OF reportList and a loop through data finding city.
+
+buttonCall.on("click", function() {
+  console.log("Button Clicked")
+  console.log(reportList)
+
+  if (reportList.length == 0) {
+    alert("Please click a city marker to generate a report for that city.");
+  }
+
+  d3.json(url, function(data) {
+    console.log(data);
+    console.log(data.length);
+    var GraphData = data
+    for (var i = 0; i < GraphData.length; i++) { 
+      if (GraphData[i].CITY == reportList[0]) {
+        console.log(GraphData[i])
+      };
+    };  
+  });  
+});
+
+
 /* const dataPromise = d3.json(url);
 console.log("Data Promise: ", dataPromise); */
