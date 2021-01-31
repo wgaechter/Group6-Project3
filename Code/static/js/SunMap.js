@@ -57,6 +57,7 @@ L.marker([39.50, -80], {
  */
 //-----------------------------------------------------------------------
 
+var reportList = []
 
 d3.json(url, function(data){
   console.log(data);
@@ -68,27 +69,87 @@ d3.json(url, function(data){
       console.log(`${SunData[i].CITY} is NOT sunny usually!`)
       L.marker([SunData[i].LATITUDE, data[i].LONGITUDE], {
         icon: CloudIcon
-      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+      }).bindPopup(data[i].CITY).addTo(SunMap).on("click", function(e) {
+        console.log("Clicked Marker")
+        var clickedMarker = e.target.getPopup();
+        var clickedContent = clickedMarker.getContent();
+
+        reportList = []
+        reportList.push(clickedContent)
+
+        var buttonCall = d3.select("#ReportButton")
+        
+        buttonCall.select("p")
+            .text("Generate Report For " + reportList)
+
+        console.log(reportList);
+      });   
     }
     if (data[i].ANN >= 55 && data[i].ANN < 60) {
       console.log(`${SunData[i].CITY} is NOT usually sunny usually!`)
       L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
         icon: PartlyIcon
-      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+      }).bindPopup(data[i].CITY).addTo(SunMap).on("click", function(e) {
+        console.log("Clicked Marker")
+        var clickedMarker = e.target.getPopup();
+        var clickedContent = clickedMarker.getContent();
+
+        reportList = []
+        reportList.push(clickedContent)
+
+        var buttonCall = d3.select("#ReportButton")
+        
+        buttonCall.select("p")
+            .text("Generate Report For " + reportList)
+
+        console.log(reportList);
+      });    
     }
     if (data[i].ANN >= 60 && data[i].ANN < 65) {
       console.log(`${SunData[i].CITY} is NOT always sunny usually!`)
       L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
         icon: HazyIcon
-      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+      }).bindPopup(data[i].CITY).addTo(SunMap).on("click", function(e) {
+        console.log("Clicked Marker")
+        var clickedMarker = e.target.getPopup();
+        var clickedContent = clickedMarker.getContent();
+
+        reportList = []
+        reportList.push(clickedContent)
+
+        var buttonCall = d3.select("#ReportButton")
+        
+        buttonCall.select("p")
+            .text("Generate Report For " + reportList)
+      
+        console.log(reportList);
+      });    
     }
     if (data[i].ANN >= 65) {
       console.log(`${SunData[i].CITY} is sunny usually!`)
       L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
         icon: SunnyIcon
-      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+      }).bindPopup(data[i].CITY).addTo(SunMap).on("click", function(e) {
+        console.log("Clicked Marker")
+        var clickedMarker = e.target.getPopup();
+        var clickedContent = clickedMarker.getContent();
+
+        reportList = []
+        reportList.push(clickedContent)
+
+        var buttonCall = d3.select("#ReportButton")
+        
+        buttonCall.select("p")
+            .text("Generate Report For " + reportList)
+
+        console.log(reportList);
+      });  
     }
   };
 });
+
+
+
+
 /* const dataPromise = d3.json(url);
 console.log("Data Promise: ", dataPromise); */
