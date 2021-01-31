@@ -64,14 +64,26 @@ d3.json(url, function(data){
   var SunData = data
   for (var i = 0; i < data.length; i++) {
     //console.log(`Detected ${SunData[i].CITY}`)
-    if (SunData[i].ANN < 60) {
-      console.log(`${SunData[i].CITY} is sunny usually!`)
+    if (SunData[i].ANN < 55) {
+      console.log(`${SunData[i].CITY} is NOT sunny usually!`)
       L.marker([SunData[i].LATITUDE, data[i].LONGITUDE], {
         icon: CloudIcon
       }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
     }
-    if (data[i].ANN >= 60) {
-      console.log(`${SunData[i].CITY} is NOT sunny usually!`)
+    if (data[i].ANN >= 55 && data[i].ANN < 60) {
+      console.log(`${SunData[i].CITY} is NOT usually sunny usually!`)
+      L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
+        icon: PartlyIcon
+      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+    }
+    if (data[i].ANN >= 60 && data[i].ANN < 65) {
+      console.log(`${SunData[i].CITY} is NOT always sunny usually!`)
+      L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
+        icon: HazyIcon
+      }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
+    }
+    if (data[i].ANN >= 65) {
+      console.log(`${SunData[i].CITY} is sunny usually!`)
       L.marker([data[i].LATITUDE, data[i].LONGITUDE], {
         icon: SunnyIcon
       }).bindPopup("<h1>" + data[i].CITY + "</h1>").addTo(SunMap);  
