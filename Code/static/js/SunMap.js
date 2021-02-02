@@ -10,28 +10,28 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   tileSize: 512,
   maxZoom: 18,
   zoomOffset: -1,
-  id: "mapbox/streets-v11",
+  id: "mapbox/satellite-streets-v11",
   accessToken: API_KEY
 }).addTo(SunMap);
 
 var CloudIcon = L.icon ({
   iconUrl: "/static/sun_icons/cloud.png",
-  iconSize: [50, 50],
+  iconSize: [30, 30],
   popupAnchor: [0, -25]
 });
 var PartlyIcon = L.icon ({
   iconUrl: "/static/sun_icons/partly.png",
-  iconSize: [50, 50],
+  iconSize: [30, 30],
   popupAnchor: [0, -25]
 });
 var HazyIcon = L.icon ({
   iconUrl: "/static/sun_icons/hazy.png",
-  iconSize: [50, 50],
+  iconSize: [30, 30],
   popupAnchor: [0, -25]
 });
 var SunnyIcon = L.icon ({
   iconUrl: "/static/sun_icons/sunny.png",
-  iconSize: [50, 50],
+  iconSize: [30, 30],
   popupAnchor: [0, -25]
 });
 
