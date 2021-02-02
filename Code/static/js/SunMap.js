@@ -17,22 +17,22 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var CloudIcon = L.icon ({
   iconUrl: "/static/sun_icons/cloud.png",
   iconSize: [30, 30],
-  popupAnchor: [0, -25]
+  popupAnchor: [0, -5]
 });
 var PartlyIcon = L.icon ({
   iconUrl: "/static/sun_icons/partly.png",
   iconSize: [30, 30],
-  popupAnchor: [0, -25]
+  popupAnchor: [0, -5]
 });
 var HazyIcon = L.icon ({
   iconUrl: "/static/sun_icons/hazy.png",
   iconSize: [30, 30],
-  popupAnchor: [0, -25]
+  popupAnchor: [0, -5]
 });
 var SunnyIcon = L.icon ({
   iconUrl: "/static/sun_icons/sunny.png",
   iconSize: [30, 30],
-  popupAnchor: [0, -25]
+  popupAnchor: [0, -5]
 });
 
 // ICON TESTING 
@@ -156,6 +156,7 @@ buttonCall.on("click", function() {
     console.log(data);
     console.log(data.length);
     var GraphData = data
+    //error message for clicking generate button with no city attached
     for (var i = 0; i < GraphData.length; i++) { 
       if (GraphData[i].CITY == reportList[0]) {
         console.log(GraphData[i])
