@@ -18,6 +18,10 @@ body {
   margin-bottom: 30px;
 }
 
+.text-center {
+  margin-bottom: 20px;
+}
+
 h1 {
   text-align: center;
 }
@@ -33,3 +37,4 @@ p.header {
 p.CityInfoText {
   text-align: center;
 }
+
