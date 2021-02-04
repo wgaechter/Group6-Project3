@@ -23,7 +23,7 @@ json_data = dumps(list_cities)
  
 @app.route("/")
 def home():
-    return "go to /home"
+    return render_template('home.html')
 
 @app.route("/home")
 def normal():
