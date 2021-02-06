@@ -1,5 +1,27 @@
 
 var url = "http://127.0.0.1:5000/json";
+// app.js stuff
+var svgWidth = 960;
+var svgHeight = 500;
+
+var margin = {
+  top: 20,
+  right: 40,
+  bottom: 60,
+  left: 100
+};
+
+var chartwidth = svgWidth - margin.left - margin.right;
+var chartheight = svgHeight - margin.top - margin.bottom;
+
+// Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
+var svg = d3.select("#chart")
+  .append("svg")
+  .attr("width", svgWidth)
+  .attr("height", svgHeight);
+
+var chartGroup = svg.append("g")
+  .attr("transform", `translate(${margin.left}, ${margin.top})`); 
 //var reportList = []
 var buttonCall = d3.select("#ReportButton")
 //function plots() {
@@ -31,30 +53,59 @@ knob.setValue(0);
   //console.log(reportList)
 
   d3.json(url, function(data) {
-    d3.selectAll('svg > g > *').remove();
+        d3.selectAll('svg > g > *').remove();
     console.log(data);
     console.log(data.length);
     var GraphData = data
+    // City Text Change
+
+    for (var i = 0; i < GraphData.length; i++) { 
+      if (GraphData[i].CITY == reportList[0]) {
+        console.log(GraphData[i])
+        d3.select("#CityTitle")
+            .text(`${GraphData[i].CITY}, ${GraphData[i].STATE_CODE}`)
+        if (GraphData[i].ANN >= 65) {
+          d3.select("#CityInfo")
+            .text(`${GraphData[i].CITY} is usually gonna be sunny!`)
+        }
+        else if (GraphData[i].ANN >= 55) {
+          d3.select("#CityInfo")
+            .text(`${GraphData[i].CITY} will probably be sunny!`)
+        }
+        else if (GraphData[i].ANN >= 45) {
+          d3.select("#CityInfo")
+            .text(`${GraphData[i].CITY} will hopefully be sunny!`)
+        }
+        else {
+          d3.select("#CityInfo")
+            .text(`${GraphData[i].CITY} will be sunny if you're lucky!`)
+        }
+      };
+    };
+
+    //Dial Change
     for (var i = 0; i < GraphData.length; i++) { 
       if (GraphData[i].CITY == reportList[0]) {
         knob.setValue(GraphData[i].ANN);
         var ann = GraphData[i].ANN;
         if(ann<50) {
-            knob.setProperty('colorFG', '#DAF7A6');}
+            knob.setProperty('colorFG', '#DAF7A6')
+        }
         else if(ann<60) {
-            knob.setProperty('colorFG', '#FFC300');}
+            knob.setProperty('colorFG', '#FFC300')
+        }
         else if(ann<70){
-            knob.setProperty('colorFG', '#FF5733');}
+            knob.setProperty('colorFG', '#FF5733')
+        }
         else if(ann<80){
-            knob.setProperty('colorFG', '#C70039');}
-        else{
-            knob.setProperty('colorFG', '#900C3F');}
-       
+            knob.setProperty('colorFG', '#C70039')
+        }
+        else {
+            knob.setProperty('colorFG', '#900C3F')
+        }
      };
     }; 
-    
-    
-    //*************** */
+    //Chart Build
     for (var i = 0; i < GraphData.length; i++) { 
       if (GraphData[i].CITY == reportList[0]) {
         console.log(GraphData[i])
@@ -127,10 +178,6 @@ knob.setValue(0);
         .attr("class", "axisText")
         .text("Month of year");
 //********************************** */
-
-
-
-
   });  
 });
 
