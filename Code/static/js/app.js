@@ -22,6 +22,16 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`); 
 // var parseTime = d3.timeParse("%B");
 /////**************************** */
+// var url = "http://127.0.0.1:5000/json";
+// //var reportList = []
+// var buttonCall = d3.select("#ReportButton");
+//function plots() {
+    // getting data from the json file
+    // d3.json(url,function(data) {      
+    //   console.log(reportList)
+
+
+    //     console.log(data)
 buttonCall.on("click", function() {
     d3.json(url,function(data) {
         console.log(data);
