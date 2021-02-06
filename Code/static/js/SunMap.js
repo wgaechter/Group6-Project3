@@ -39,13 +39,13 @@ var SunnyIcon = L.icon ({
 //------------------------------------------------------------------------------------
 //GRAPH INFO
 //------------------------------------------------------------------------------------
-var svgWidth = 400;
-var svgHeight = 400;
+var svgWidth = 550;
+var svgHeight = 300;
 
 var margin = {
-  top: 100,
+  top: 20,
   right: 40,
-  bottom: 100,
+  bottom: 60,
   left: 100
 };
 
@@ -287,7 +287,7 @@ buttonCall.on("click", function() {
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left + 40)
-        .attr("x", 0 - (chartheight / 2))// sub 0 to make sure it's going up
+        .attr("x", 0 - (chartheight / 1))// sub 0 to make sure it's going up
         .attr("dy", "1em")
         .attr("class", "axisText")
         .text("Percent of Sunshine");
