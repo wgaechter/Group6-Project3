@@ -176,7 +176,7 @@ buttonCall.on("click", function() {
         }
         else {
           d3.select("#CityInfo")
-            .text(`${GraphData[i].CITY} will be sunny if your lucky!`)
+            .text(`${GraphData[i].CITY} will be sunny if you're lucky!`)
         }
       };
     };  
