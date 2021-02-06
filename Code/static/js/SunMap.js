@@ -160,6 +160,24 @@ buttonCall.on("click", function() {
     for (var i = 0; i < GraphData.length; i++) { 
       if (GraphData[i].CITY == reportList[0]) {
         console.log(GraphData[i])
+        d3.select("#CityTitle")
+            .text(`${GraphData[i].CITY}, ${GraphData[i].STATE_CODE}`)
+        if (GraphData[i].ANN >= 65) {
+          d3.select("#CityInfo")
+            .text(`${GraphData[i].CITY} is usually gonna be sunny!`)
+        }
+        else if (GraphData[i].ANN >= 55) {
+          d3.select("#CityInfo")
+            .text(`${GraphData[i].CITY} will probably be sunny!`)
+        }
+        else if (GraphData[i].ANN >= 45) {
+          d3.select("#CityInfo")
+            .text(`${GraphData[i].CITY} will hopefully be sunny!`)
+        }
+        else {
+          d3.select("#CityInfo")
+            .text(`${GraphData[i].CITY} will be sunny if your lucky!`)
+        }
       };
     };  
   });  
