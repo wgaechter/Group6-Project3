@@ -1,7 +1,7 @@
 
 var url = "http://127.0.0.1:5000/json";
 // app.js stuff
-var svgWidth = 960;
+var svgWidth = 750;
 var svgHeight = 500;
 
 var margin = {
